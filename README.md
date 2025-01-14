@@ -18,7 +18,7 @@ Thank you for visiting Super Mario Arcade!
 
 [responsive-readme]:./assets/images/project-2-final-responsive.png
 
-https://aaronalonsotorrens.github.io/project-2-final/
+https://aaronalonsotorrens.github.io/arcade-game/
 
 ## UX - User Experience Design
 
