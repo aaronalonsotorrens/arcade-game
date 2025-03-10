@@ -147,6 +147,7 @@ function startGame() {
       loadNewImage();
       timerStarted = true;
       currentTime = 10;
+      timeLeft.textContent = "Timer: " + currentTime + "s";
       countDownTimerId = setInterval(countDown, 1000);
   }
 }
@@ -156,21 +157,36 @@ function endGame() {
   clearInterval(countDownTimerId);
   timerStarted = false;
 
-  const finalScore = document.getElementById("score").innerText;
+  const finalScore = parseInt(document.getElementById("score").innerText); // Convert to number
 
-  //Check if the final score is a new high score
-  if (finalScore > highScore) {
+  // Check if the final score is a new high score
+  if (finalScore > parseInt(highScore)) { // Ensure correct comparison
     highScore = finalScore;
     localStorage.setItem("highScore", highScore);
-    document.getElementById("high-score").textContent = highScore;
+    document.getElementById("high-score-value").textContent = highScore;
   }
+
+  // Display final score message and show restart option
   winningMessageTextElement.textContent = `Your final score is ${finalScore}`;
-  winningMessageElement.classList.add("show");
+  winningMessageElement.classList.add("show"); // Ensure the message box appears
+
+  // Ensure the restart button is visible
+  restartButton.style.display = "block"; 
 }
 
 // Restart game function
 function restartGame() {
-  window.location.reload();
+  // Reset UI elements
+  document.getElementById("score").innerText = "0";
+  document.getElementById("incorrect").innerText = "0";
+  currentTime = 10;
+  timeLeft.textContent = "Timer: " + currentTime + "s";
+  winningMessageElement.classList.remove("show"); // Hide end screen
+
+  // Restart game variables
+  timerStarted = false;
+  countDownTimerId = setInterval(countDown, 1000); // Restart timer
+  loadNewImage(); // Load a new image
 }
 
 // Event listeners

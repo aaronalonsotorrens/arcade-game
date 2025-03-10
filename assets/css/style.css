@@ -410,6 +410,10 @@ button {
     justify-content: center;
 }
 
+#restart-button {
+    display: none;
+  }
+
 /* Footer */
 
 footer {
