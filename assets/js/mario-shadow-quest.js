@@ -99,14 +99,21 @@ function loadNewImage() {
 // Function to check if the selected option is correct
 function checkOption(optionIndex) {
   const resultMessage = document.getElementById("result-message");
+
+  // Ensure that imageIndex and correctOption are valid
+  if (imageIndex === undefined || !gameData[imageIndex]) {
+    console.error("Invalid image index. Please load a new image.");
+    return;
+  }
+
   const correctOption = gameData[imageIndex].correctOption;
 
   if (optionIndex === correctOption) {
-      resultMessage.style.color = "green";
-      incrementScore();
+    resultMessage.style.color = "green";
+    incrementScore();
   } else {
-      resultMessage.style.color = "red";
-      incrementWrongAnswer();
+    resultMessage.style.color = "red";
+    incrementWrongAnswer();
   }
 
   // Delay loading a new image for better UX
