@@ -133,11 +133,14 @@ function incrementWrongAnswer() {
 
 // Countdown timer function
 function countDown() {
-  currentTime--;
-  timeLeft.textContent = "Timer: " + currentTime + "s"; 
+  if (currentTime > 0) {
+    currentTime--;
+    timeLeft.textContent = "Timer: " + currentTime + "s";
+  }
 
   if (currentTime === 0) {
-      endGame();
+    clearInterval(countDownTimerId); // Stop the timer properly
+    endGame();
   }
 }
 
@@ -176,6 +179,8 @@ function endGame() {
 
 // Restart game function
 function restartGame() {
+  clearInterval(countDownTimerId); // Ensure the old timer is stopped before starting a new one
+
   // Reset UI elements
   document.getElementById("score").innerText = "0";
   document.getElementById("incorrect").innerText = "0";
@@ -184,8 +189,8 @@ function restartGame() {
   winningMessageElement.classList.remove("show"); // Hide end screen
 
   // Restart game variables
-  timerStarted = false;
-  countDownTimerId = setInterval(countDown, 1000); // Restart timer
+  timerStarted = true; // Prevent multiple intervals from starting
+  countDownTimerId = setInterval(countDown, 1000); // Start a fresh timer
   loadNewImage(); // Load a new image
 }
 
