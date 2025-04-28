@@ -149,10 +149,6 @@ function startGame() {
   if (!timerStarted) {
       loadNewImage();
       timerStarted = true;
-<<<<<<< HEAD
-      currentTime = 10;
-=======
->>>>>>> 13503da (Resolved issue with shadow quest and improved the UX)
       timeLeft.textContent = "Timer: " + currentTime + "s";
       countDownTimerId = setInterval(countDown, 1000);
   }
@@ -184,25 +180,13 @@ function endGame() {
 // Restart game function
 
 function restartGame() {
-<<<<<<< HEAD
-  clearInterval(countDownTimerId); // Ensure the old timer is stopped before starting a new one
-=======
   clearInterval(countDownTimerId); // Stop any running timer
->>>>>>> 13503da (Resolved issue with shadow quest and improved the UX)
 
   // Reset UI elements
   document.getElementById("score").innerText = "0";
   document.getElementById("incorrect").innerText = "0";
   currentTime = 10;
   timeLeft.textContent = "Timer: " + currentTime + "s";
-<<<<<<< HEAD
-  winningMessageElement.classList.remove("show"); // Hide end screen
-
-  // Restart game variables
-  timerStarted = true; // Prevent multiple intervals from starting
-  countDownTimerId = setInterval(countDown, 1000); // Start a fresh timer
-  loadNewImage(); // Load a new image
-=======
   winningMessageElement.classList.remove("show"); // Hide final score message
   restartButton.style.display = "none"; // Optional: hide restart button again
 
@@ -210,7 +194,6 @@ function restartGame() {
   timerStarted = false; // So startGame can work again when clicked
 
   // Wait for user to click Start Game manually
->>>>>>> 13503da (Resolved issue with shadow quest and improved the UX)
 }
 
 // Event listeners
